@@ -71,20 +71,29 @@ public class LocatorsTest {
         WebElement bikeLightAddToCartButton = driver.findElement(By.cssSelector("#add-to-cart-sauce-labs-bike-light"));
         bikeLightAddToCartButton.click();
 
-        WebElement cartLink = driver.findElement(By.cssSelector("#shopping_cart_container > a"));
+        WebElement cartLink = driver.findElement(By.cssSelector("#shopping_cart_container"));
         cartLink.click();
 
         assertEquals("Sauce Labs Bolt T-Shirt", driver.findElements(By.className("inventory_item_name")).get(0).getText());
         assertEquals("Sauce Labs Bike Light", driver.findElements(By.className("inventory_item_name")).get(1).getText());
 
         // Ждём пока страница появится - этот способ подходит только для демонстрации
-/*        try {
+        try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-*/
-        WebElement checkoutButton = driver.findElement(By.cssSelector("#logout_sidebar_link"));
+    WebElement burgerButton = driver.findElement(By.cssSelector("#react-burger-menu-btn"));
+        burgerButton.click();
+
+        // Ждём пока страница появится - этот способ подходит только для демонстрации
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        WebElement checkoutButton = driver.findElement(By.cssSelector("#checkout"));
         checkoutButton.click();
 
         assertEquals("First Name", driver.findElement(By.name("firstName")).getAttribute("placeholder"));
@@ -105,7 +114,7 @@ public class LocatorsTest {
         WebElement tShirtAddToCartButton = driver.findElement(By.xpath("//*[@id='add-to-cart-sauce-labs-bolt-t-shirt']"));
         tShirtAddToCartButton.click();
 
-        WebElement bikeLightPageLink = driver.findElement(By.xpath("<div class='inventory_item_name'>Sauce Labs Bike Light</div>"));
+        WebElement bikeLightPageLink = driver.findElement(By.xpath("//*[@id=\"item_0_title_link\"]/div"));
         bikeLightPageLink.click();
 
         WebElement bikeLightAddToCartButton = driver.findElement(By.xpath("//*[@id='add-to-cart-sauce-labs-bike-light']"));
@@ -117,14 +126,8 @@ public class LocatorsTest {
         assertEquals("Sauce Labs Bolt T-Shirt", driver.findElements(By.className("inventory_item_name")).get(0).getText());
         assertEquals("Sauce Labs Bike Light", driver.findElements(By.className("inventory_item_name")).get(1).getText());
 
-        // Ждём пока страница появится - этот способ подходит только для демонстрации
-/*        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-*/
-        WebElement checkoutButton = driver.findElement(By.xpath("//*[@id='logout_sidebar_link']"));
+
+        WebElement checkoutButton = driver.findElement(By.xpath("//*[@id=\"checkout\"]"));
         checkoutButton.click();
 
         assertEquals("First Name", driver.findElement(By.name("firstName")).getAttribute("placeholder"));
